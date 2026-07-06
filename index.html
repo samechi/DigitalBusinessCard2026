@@ -1,910 +1,310 @@
-<!-- <!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
-<title>如月 瑞希 | Portfolio & Card</title>
-<meta name="theme-color" content="#12213A">
- 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
- 
-<style>
-  :root{
-    --ink:      #12213A;   /* 主色：紺 */
-    --ink-soft: #2A3B5C;
-    --paper:    #F7F5F1;   /* 背景：暖かいオフホワイト */
-    --surface:  #FFFFFF;   /* カード面 */
-    --slate:    #5C6470;   /* 補助テキスト */
-    --brass:    #A9822C;   /* アクセント：真鍮色 */
-    --brass-soft: #C7A75E;
-    --line:     #E4DFD5;   /* 罫線 */
-    --radius-lg: 22px;
-    --radius-md: 14px;
-    --radius-sm: 8px;
-    --safe-top: env(safe-area-inset-top, 0px);
-    --safe-bottom: env(safe-area-inset-bottom, 0px);
-  }
- 
-  *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
- 
-  html,body{
-    margin:0; padding:0;
-    background:var(--paper);
-    color:var(--ink);
-    font-family:'Inter', -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Noto Sans JP', sans-serif;
-    -webkit-font-smoothing:antialiased;
-  }
- 
-  body{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:flex-start;
-    padding: calc(28px + var(--safe-top)) 16px calc(40px + var(--safe-bottom));
-  }
- 
-  .card{
-    width:100%;
-    max-width:440px;
-    background:var(--surface);
-    border-radius:var(--radius-lg);
-    overflow:hidden;
-    box-shadow:0 1px 2px rgba(18,33,58,0.04), 0 18px 40px -14px rgba(18,33,58,0.28);
-    opacity:0;
-    transform:translateY(14px);
-    animation:riseIn .7s cubic-bezier(.2,.7,.2,1) .05s forwards;
-  }
- 
-  @keyframes riseIn{ to{ opacity:1; transform:translateY(0); } }
- 
-  /* ---------- header band ---------- */
-  .header{
-    position:relative;
-    height:132px;
-    background:
-      repeating-linear-gradient(135deg, rgba(255,255,255,0.035) 0 2px, transparent 2px 14px),
-      radial-gradient(120% 140% at 15% -10%, #1C2E4F 0%, #101B32 60%, #0C1526 100%);
-  }
-  .header::after{
-    content:"";
-    position:absolute; left:0; right:0; bottom:0;
-    height:1px;
-    background:linear-gradient(90deg, transparent, var(--brass-soft), transparent);
-    opacity:.6;
-  }
- 
-  /* seal / monogram badge */
-  .seal-wrap{
-    position:absolute;
-    left:24px;
-    bottom:-38px;
-    width:76px; height:76px;
-  }
-  .seal{
-    width:100%; height:100%;
-    border-radius:50%;
-    background:var(--surface);
-    border:1px solid var(--line);
-    display:flex; align-items:center; justify-content:center;
-    box-shadow:0 8px 18px -6px rgba(18,33,58,0.35);
-  }
-  .seal-inner{
-    width:62px; height:62px;
-    border-radius:50%;
-    border:1.5px solid var(--brass);
-    display:flex; align-items:center; justify-content:center;
-    font-family:'Playfair Display', serif;
-    font-weight:700;
-    font-size:20px;
-    letter-spacing:1px;
-    color:var(--ink);
-    overflow:hidden;
-    background: #fcfbf9;
-  }
-  .seal-inner img{
-    width:100%; height:100%;
-    object-fit:cover;
-    display:block;
-  }
- 
-  /* ---------- identity block ---------- */
-  .identity{
-    padding:52px 24px 14px;
-  }
-  .name-jp{
-    font-family:'Playfair Display', serif;
-    font-weight:700;
-    font-size:26px;
-    line-height:1.25;
-    margin:0;
-    color:var(--ink);
-  }
-  .name-en{
-    margin:4px 0 0;
-    font-size:11px;
-    font-weight:600;
-    letter-spacing:2.2px;
-    color:var(--slate);
-    text-transform:uppercase;
-  }
-  .role{
-    margin:14px 0 0;
-    font-size:14.5px;
-    color:var(--ink-soft);
-    line-height:1.6;
-  }
-  .role .company{
-    font-weight:600;
-    color:var(--ink);
-  }
-  .bio{
-    margin:12px 0 0;
-    font-size:13px;
-    color:var(--slate);
-    line-height:1.5;
-  }
- 
-  .rule{
-    margin:12px 24px 0;
-    height:1px;
-    background:linear-gradient(90deg, var(--brass) 0%, var(--line) 40%);
-  }
- 
-  /* ---------- action bar ---------- */
-  .actions{
-    display:flex;
-    gap:10px;
-    padding:18px 24px 4px;
-  }
-  .action-btn{
-    flex:1;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:6px;
-    padding:12px 6px 10px;
-    border-radius:var(--radius-md);
-    background:var(--ink);
-    color:#fff;
-    text-decoration:none;
-    font-size:11.5px;
-    font-weight:600;
-    letter-spacing:.2px;
-    border:1px solid var(--ink);
-    transition:transform .12s ease, opacity .12s ease;
-  }
-  .action-btn.outline{
-    background:transparent;
-    color:var(--ink);
-  }
-  .action-btn:active{ transform:scale(.96); opacity:.85; }
-  .action-btn svg{ width:19px; height:19px; }
- 
-  /* ---------- section common ---------- */
-  .section-label{
-    margin:28px 24px 12px;
-    font-size:11px;
-    font-weight:700;
-    letter-spacing:2px;
-    color:var(--brass);
-    text-transform:uppercase;
-    display:flex;
-    align-items:center;
-    gap:8px;
-  }
-  .section-label::after{
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(90deg, var(--line), transparent);
-  }
-
-  /* ---------- skills ---------- */
-  .skills-container{
-    padding:0 24px;
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-  }
-  .skill-badge{
-    font-size:12px;
-    font-weight:500;
-    padding:6px 12px;
-    background: #F0EDE6;
-    color: var(--ink-soft);
-    border-radius:var(--radius-sm);
-  }
-
-  /* ---------- works / portfolio ---------- */
-  .works-list{
-    padding:0 24px;
-    display:flex;
-    flex-direction:column;
-    gap:14px;
-  }
-  .work-item{
-    display:flex;
-    background: #FAF9F6;
-    border: 1px solid var(--line);
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-  }
-  .work-item:active{
-    transform: scale(0.98);
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
-  }
-  .work-thumb{
-    width: 100px;
-    height: 100px;
-    flex: 0 0 auto;
-    background: var(--ink-soft);
-    position: relative;
-    overflow: hidden;
-  }
-  .work-thumb img{
-    width: 100%; height: 100%;
-    object-fit: cover;
-  }
-  .work-thumb-fallback{
-    width:100%; height:100%;
-    display:flex; align-items:center; justify-content:center;
-    font-family: 'Playfair Display', serif;
-    color: var(--brass-soft);
-    font-weight: 700;
-    font-size: 18px;
-  }
-  .work-info{
-    padding: 12px 14px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex: 1;
-    min-width: 0;
-  }
-  .work-title{
-    margin: 0 0 4px;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--ink);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .work-desc{
-    margin: 0;
-    font-size: 12px;
-    color: var(--slate);
-    line-height: 1.4;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  /* ---------- Modal Window (New) ---------- */
-  .modal-overlay{
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(18, 33, 58, 0.6);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    z-index: 1000;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-  }
-  .modal-overlay.is-active{
-    opacity: 1;
-    pointer-events: auto;
-  }
-  .modal-window{
-    width: 100%;
-    max-width: 400px;
-    background: var(--surface);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    box-shadow: 0 24px 50px -12px rgba(18,33,58,0.4);
-    transform: translateY(20px);
-    transition: transform 0.3s cubic-bezier(.2,.7,.2,1);
-    max-height: 80vh;
-    display: flex;
-    flex-direction: column;
-  }
-  .modal-overlay.is-active .modal-window{
-    transform: translateY(0);
-  }
-  .modal-header{
-    position: relative;
-    padding: 24px;
-    background: radial-gradient(100% 100% at 15% 0%, #1C2E4F 0%, #101B32 100%);
-    color: #fff;
-  }
-  .modal-header .modal-title{
-    margin: 0;
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 1.4;
-    padding-right: 28px;
-  }
-  .modal-close{
-    position: absolute;
-    top: 20px; right: 20px;
-    background: rgba(255,255,255,0.1);
-    border: none;
-    color: #fff;
-    width: 28px; height: 28px;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-  .modal-close:active{ background: rgba(255,255,255,0.2); }
-  .modal-close svg{ width: 16px; height: 16px; }
-  
-  .modal-body{
-    padding: 24px;
-    overflow-y: auto;
-    font-size: 14px;
-    line-height: 1.7;
-    color: var(--ink-soft);
-  }
-  .modal-body img{
-    width: 100%;
-    border-radius: var(--radius-md);
-    margin-bottom: 16px;
-    border: 1px solid var(--line);
-  }
-  .modal-footer{
-    padding: 16px 24px;
-    border-top: 1px solid var(--line);
-    background: #FAF9F6;
-    display: flex;
-    justify-content: flex-end;
-  }
-  .modal-link-btn{
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--brass);
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-  }
-  body.modal-open {
-    overflow: hidden;
-  }
- 
-  /* ---------- connect / sns ---------- */
-  .sns-list{ padding:0 12px 6px; }
-  .sns-row{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    padding:12px 12px;
-    margin:0 12px;
-    text-decoration:none;
-    color:var(--ink);
-    border-bottom:1px solid var(--line);
-  }
-  .sns-row:last-child{ border-bottom:none; }
-  .sns-chip{
-    width:32px; height:32px;
-    flex:0 0 auto;
-    border-radius:9px;
-    background:var(--ink);
-    color:#fff;
-    display:flex; align-items:center; justify-content:center;
-    font-size:12px;
-    font-weight:700;
-    letter-spacing:.2px;
-  }
-  .sns-name{
-    flex:1;
-    font-size:14px;
-    font-weight:500;
-  }
-  .sns-row svg.chev{
-    width:16px; height:16px;
-    color:var(--slate);
-    flex:0 0 auto;
-  }
-  .sns-row:active{ background:#FAFAF8; }
- 
-  /* ---------- footer ---------- */
-  .footer{
-    padding:32px 24px calc(20px);
-    text-align:center;
-  }
-  .footer .rule-thin{
-    height:1px;
-    background:var(--line);
-    margin:0 0 14px;
-  }
-  .footer small{
-    font-size:10.5px;
-    letter-spacing:1.6px;
-    color:#9AA1AC;
-    text-transform:uppercase;
-  }
-
-  @media (prefers-reduced-motion: reduce){
-    .card{ animation:none; opacity:1; transform:none; }
-    .action-btn, .work-item, .sns-row, .modal-overlay, .modal-window{ transition:none; }
-  }
-</style>
-</head>
-<body>
-
-<div class="card" id="card">
-  <div class="header">
-    <div class="seal-wrap">
-      <div class="seal"><div class="seal-inner" id="sealInner">KM</div></div>
-    </div>
-  </div>
- 
-  <div class="identity">
-    <p class="name-jp" id="nameJp">-</p>
-    <p class="name-en" id="nameEn">-</p>
-    <p class="role">
-      <span id="jobTitle">-</span> ／
-      <span class="company" id="company">-</span>
-    </p>
-    <p class="bio" id="bio">-</p>
-  </div>
-
-  <div class="rule"></div>
-
-  <div class="actions" id="actions"></div>
-
-  <div class="section-label">Expertise</div>
-  <div class="skills-container" id="skillsContainer"></div>
-
-  <div class="section-label">Selected Works</div>
-  <div class="works-list" id="worksList"></div>
-
-  <div class="section-label">Connect</div>
-  <div class="sns-list" id="snsList"></div>
-
-  <div class="footer">
-    <div class="rule-thin"></div>
-    <small>Digital Card & Portfolio</small>
-  </div>
-</div>
-
-<div class="modal-overlay" id="modalOverlay">
-  <div class="modal-window">
-    <div class="modal-header">
-      <h3 class="modal-title" id="modalTitle">Project Title</h3>
-      <button class="modal-close" id="modalClose" aria-label="閉じる">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-      </button>
-    </div>
-    <div class="modal-body" id="modalBody">
-      </div>
-    <div class="modal-footer" id="modalFooter">
-      </div>
-  </div>
-</div>
-
-<script>
-/* ============================================================
-    ▼▼▼ ここをあなたの情報に書き換えてください ▼▼▼
-   ============================================================ */
-const CONFIG = {
-  nameJp:   "さめち だよ",
-  nameEn:   "DAYO SAMECHI",
-  initials: "KM",
-  jobTitle: "最高執行責任者 / システムエンジニア",
-  company:  "",
-  bio:      "毎日読書をしているインドア専門学生です。",
-  photoUrl: "img/popon.jpeg",
-  website: "https://example.com",
-
-  skills: [
-  "COO",
-    "System Engineering", 
-    "UI/UX Design", 
-    "Creative Direction", 
-    "Digital Contents Production", 
-    "HTML5/CSS3", 
-    "Homepage Design"
-  ],
-
-  // ポートフォリオ（detail にモーダル用の詳細解説を記述できます）
-  works: [
-    {
-      title: "Corporate Identity Redesign",
-      desc: "最高執行評議部のブランドアイデンティティ刷新プロジェクト。",
-      detail: "既存のイメージを現代のデジタル環境に適応させるため、1年をかけてリブランディングを主導。<br><br>伝統的な重厚感と、先進的な透明性を融合させたコア・ビジュアルを定義し、各種プロダクトから内製ツールに至るまで、包括的なデザインシステムを構築しました。これにより、一貫したブランド体験の提供と、開発速度の30%向上を達成しています。",
-      url: "https://example.com/project1", // 関連リンク（不要なら空文字 "" で非表示）
-      img: "" 
-    },
-    {
-      title: "Digital Business Card Architecture",
-      desc: "モバイルファーストで洗練された、レスポンシブな次世代デジタル名刺のUI設計。",
-      detail: "個人があらゆるデバイスで「一瞬で自分をプレゼンテーションできる」ミニマルなデジタル名刺の骨組みを設計。<br><br>Apple Walletのミニマリズムから着想を得た、無駄を削ぎ落としたタイポグラフィと上品な微細グラデーションを実装。さらにポートフォリオの格納機能を追加し、単なる連絡先交換ツールにとどまらない、個人の資産価値を高める設計を追求しました。",
-      url: "",
-      img: ""
-    }
-  ],
-
-  sns: [
-    { label: "X (Twitter)", chip: "X",  url: "https://x.com/example" },
-    { label: "Instagram",   chip: "IG", url: "https://instagram.com/example" },
-    { label: "LinkedIn",    chip: "in", url: "https://linkedin.com/in/example" }
-  ]
-};
-/* ============================================================
-    ▲▲▲ 編集はここまで ▲▲▲
-   ============================================================ */
-
-const icons = {
-  mail: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6 12 13 2 6"/><path d="M2 6h20v12H2z"/></svg>`,
-  globe: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20"/></svg>`,
-  external: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>`,
-  chev: `<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>`
-};
-
-// データのマッピング
-document.getElementById('nameJp').textContent = CONFIG.nameJp;
-document.getElementById('nameEn').textContent = CONFIG.nameEn;
-document.getElementById('jobTitle').textContent = CONFIG.jobTitle;
-document.getElementById('company').textContent = CONFIG.company;
-document.getElementById('bio').textContent = CONFIG.bio;
-
-const sealInner = document.getElementById('sealInner');
-if(CONFIG.photoUrl){
-  sealInner.innerHTML = `<img src="${CONFIG.photoUrl}" alt="${CONFIG.nameJp}">`;
-} else {
-  sealInner.textContent = CONFIG.initials;
-}
-
-document.getElementById('actions').innerHTML = `
-  <a class="action-btn outline" href="${CONFIG.website}" target="_blank" rel="noopener">${icons.globe}ウェブサイト</a>
-`;
-
-document.getElementById('skillsContainer').innerHTML = CONFIG.skills.map(skill => `
-  <span class="skill-badge">${skill}</span>
-`).join('');
-
-// ワークスをインデックス付きで描写
-document.getElementById('worksList').innerHTML = CONFIG.works.map((w, index) => {
-  const thumbContent = w.img 
-    ? `<img src="${w.img}" alt="${w.title}">` 
-    : `<div class="work-thumb-fallback">${w.title.charAt(0)}</div>`;
-    
-  return `
-    <div class="work-item" onclick="openModal(${index})">
-      <div class="work-thumb">${thumbContent}</div>
-      <div class="work-info">
-        <h4 class="work-title">${w.title}</h4>
-        <p class="work-desc">${w.desc}</p>
-      </div>
-    </div>
-  `;
-}).join('');
-
-document.getElementById('snsList').innerHTML = CONFIG.sns.map(s => `
-  <a class="sns-row" href="${s.url}" target="_blank" rel="noopener">
-    <div class="sns-chip">${s.chip}</div>
-    <div class="sns-name">${s.label}</div>
-    ${icons.chev}
-  </a>
-`).join('');
-
-// --- モーダル制御ロジック ---
-const overlay = document.getElementById('modalOverlay');
-const mTitle = document.getElementById('modalTitle');
-const mBody = document.getElementById('modalBody');
-const mFooter = document.getElementById('modalFooter');
-
-function openModal(index) {
-  const work = CONFIG.works[index];
-  mTitle.textContent = work.title;
-  
-  // 画像があれば詳細内にも表示
-  const bodyImg = work.img ? `<img src="${work.img}" alt="${work.title}">` : '';
-  mBody.innerHTML = bodyImg + `<p>${work.detail}</p>`;
-  
-  // プロジェクトURLがある場合のみフッターリンクを表示
-  if (work.url) {
-    mFooter.style.display = 'flex';
-    mFooter.innerHTML = `<a class="modal-link-btn" href="${work.url}" target="_blank" rel="noopener">プロジェクトサイトを見る ${icons.external}</a>`;
-  } else {
-    mFooter.style.display = 'none';
-  }
-  
-  overlay.classList.add('is-active');
-  document.body.classList.add('modal-open');
-}
-
-function closeModal() {
-  overlay.classList.remove('is-active');
-  document.body.classList.remove('modal-open');
-}
-
-document.getElementById('modalClose').addEventListener('click', closeModal);
-overlay.addEventListener('click', (e) => {
-  if (e.target === overlay) closeModal();
-});
-</script>
-</body>
-</html> -->
-
-
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>デジタル名刺 - 山田太郎</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>デジタル名刺</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --pink: #FF3E8E;
-    --yellow: #FFD23F;
-    --blue: #3EC1FF;
-    --purple: #7B2FF7;
-    --ink: #1A1A2E;
-    --paper: #FFF9F0;
+  :root{
+    --ai-deep:#16283C;
+    --ai:#213F5E;
+    --ai-light:#3A5A7C;
+    --kinari:#F6F0E3;
+    --kinari-soft:#EFE7D6;
+    --sango:#E4694F;
+    --beni:#C1392B;
+    --sumi:#2A2621;
+    --sumi-soft:#5C564C;
+    --line:rgba(42,38,33,0.12);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:
+      radial-gradient(ellipse at 50% -10%, var(--ai-light) 0%, var(--ai) 45%, var(--ai-deep) 100%);
+    font-family:'Zen Kaku Gothic New', sans-serif;
+    padding:40px 16px;
   }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  @font-face {
-    font-family: 'system-rounded';
-    src: local('Hiragino Maru Gothic ProN'), local('Yu Gothic UI');
+  .card{
+    width:100%;
+    max-width:380px;
+    background:var(--kinari);
+    border-radius:2px;
+    position:relative;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06);
+    overflow:hidden;
   }
 
-  body {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--ink);
-    background-image:
-      radial-gradient(circle at 15% 20%, rgba(255,62,142,0.35), transparent 40%),
-      radial-gradient(circle at 85% 15%, rgba(62,193,255,0.3), transparent 45%),
-      radial-gradient(circle at 50% 90%, rgba(123,47,247,0.35), transparent 45%);
-    font-family: "Hiragino Maru Gothic ProN", "Yu Gothic UI", "Zen Maru Gothic", sans-serif;
-    padding: 32px 16px;
+  /* ---- ヘッダー領域（画像が収まるよう高さを調整） ---- */
+  .header{
+    position:relative;
+    height:210px;
+    background:linear-gradient(180deg, var(--ai-deep) 0%, var(--ai) 65%, var(--ai-light) 100%);
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .header svg.waves{
+    position:absolute;
+    bottom:-2px; left:0;
+    width:100%; height:auto;
+    z-index: 2;
+  }
+  .seigaiha{
+    position:absolute;
+    inset:0;
+    opacity:0.16;
+    background-image:radial-gradient(circle at 50% 100%, transparent 0 24%, rgba(255,255,255,0.5) 24% 26%, transparent 26%);
+    background-size:44px 44px;
+    background-position: 0 0, 22px 22px;
+    z-index: 1;
   }
 
-  .stage {
-    perspective: 1200px;
+  /* ---- 判子アバター（ヘッダー中央に配置） ---- */
+  .avatar-wrap{
+    position:relative;
+    width:112px; height:112px;
+    z-index:3;
+    margin-top: -10px; /* 波とのバランス調整 */
+  }
+  .avatar-ring{
+    width:100%; height:100%;
+    border-radius:50%;
+    background:var(--kinari);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 20px rgba(0,0,0,0.25);
+  }
+  .hanko{
+    width:94px;height:94px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+
+    overflow:hidden;
+  }
+  .hanko::after{
+    content:"";
+    position:absolute;
+    inset:6px;
+    border-radius:50%;
+    opacity:0.6;
+    pointer-events: none;
+    z-index: 2;
   }
 
-  .card {
-    position: relative;
-    width: 420px;
-    max-width: 90vw;
-    background: var(--paper);
-    border-radius: 28px;
-    padding: 36px 32px 28px;
-    box-shadow:
-      0 30px 60px rgba(0,0,0,0.45),
-      0 0 0 3px var(--ink);
-    transform: rotate(-1.2deg);
-    transition: transform 0.35s ease;
-    overflow: hidden;
-  }
-
-  .card:hover {
-    transform: rotate(0deg) scale(1.02);
-  }
-
-  .confetti {
-    position: absolute;
+  /* アバター画像スタイル */
+  .avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 50%;
-  }
-  .c1 { width: 60px; height: 60px; background: var(--yellow); top: -20px; right: -20px; }
-  .c2 { width: 26px; height: 26px; background: var(--blue); bottom: 40px; left: -13px; }
-  .c3 { width: 16px; height: 16px; background: var(--pink); top: 90px; right: 24px; }
-  .c4 { width: 34px; height: 34px; background: var(--purple); bottom: -10px; right: 60px; opacity: 0.85; }
-
-  .eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    background: var(--ink);
-    color: var(--yellow);
-    padding: 6px 14px;
-    border-radius: 999px;
-    position: relative;
-    z-index: 2;
+    z-index: 1;
   }
 
-  .name-block {
-    margin-top: 20px;
-    position: relative;
-    z-index: 2;
+  /* ---- 本文（上部の余白を調整） ---- */
+  .body{
+    padding:32px 28px 28px;
+    text-align:center;
+  }
+  .name-en{
+    font-size:11px;
+    letter-spacing:0.28em;
+    color:var(--sumi-soft);
+    text-transform:uppercase;
+    margin:0 0 6px;
+  }
+  .name-jp{
+    font-family:'Shippori Mincho', serif;
+    font-weight:700;
+    font-size:30px;
+    color:var(--sumi);
+    margin:0;
+    letter-spacing:0.06em;
+  }
+  .role{
+    margin:10px 0 0;
+    font-size:13.5px;
+    color:var(--ai);
+    font-weight:500;
+    letter-spacing:0.03em;
   }
 
-  .name {
-    font-size: 40px;
-    font-weight: 900;
-    color: var(--ink);
-    line-height: 1.1;
-    display: inline-block;
-    position: relative;
+  .divider{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:22px 0;
+    color:var(--sango);
   }
-  .name::after {
-    content: "";
-    position: absolute;
-    left: -4px;
-    right: -4px;
-    bottom: 4px;
-    height: 14px;
-    background: var(--yellow);
-    z-index: -1;
-    border-radius: 4px;
-    transform: skewX(-8deg);
+  .divider .line{flex:1;height:1px;background:var(--line);}
+  .divider svg{width:16px;height:16px;flex-shrink:0;}
+
+  .catch{
+    font-family:'Shippori Mincho', serif;
+    font-size:15.5px;
+    line-height:1.9;
+    color:var(--sumi);
+    margin:0 6px;
   }
 
-  .kana {
-    display: block;
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--purple);
-    letter-spacing: 0.15em;
-    margin-bottom: 4px;
+  .tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    justify-content:center;
+    margin-top:20px;
+  }
+  .tag{
+    font-size:11.5px;
+    padding:6px 12px;
+    border-radius:100px;
+    background:var(--kinari-soft);
+    border:1px solid var(--line);
+    color:var(--ai);
+    font-weight:500;
   }
 
-  .role {
-    margin-top: 10px;
-    font-size: 15px;
-    font-weight: 700;
-    color: #fff;
-    background: var(--pink);
-    display: inline-block;
-    padding: 6px 14px;
-    border-radius: 10px;
-    transform: rotate(-1deg);
+  .links{
+    margin-top:24px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .link{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:12px 16px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:10px;
+    text-decoration:none;
+    color:var(--sumi);
+    font-size:13.5px;
+    font-weight:500;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .link:hover{
+    transform:translateY(-2px);
+    box-shadow:0 6px 14px rgba(33,63,94,0.12);
+  }
+  .link .icon{
+    width:32px;height:32px;
+    border-radius:50%;
+    background:var(--ai-deep);
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  .link .icon svg{width:16px;height:16px;stroke:var(--kinari);fill:none;}
+  .link .label{flex:1;}
+  .link .handle{color:var(--sumi-soft);font-size:11.5px;}
+
+  .footer{
+    margin-top:26px;
+    padding-top:18px;
+    border-top:1px dashed var(--line);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .footer .note{
+    font-size:10.5px;
+    color:var(--sumi-soft);
+    letter-spacing:0.04em;
+  }
+  .footer .stamp-text{
+    font-family:'Shippori Mincho', serif;
+    font-size:11px;
+    color:var(--beni);
+    border:1px solid var(--beni);
+    padding:3px 8px;
+    border-radius:4px;
   }
 
-  .divider {
-    margin: 24px 0 16px;
-    height: 4px;
-    border-radius: 4px;
-    background: repeating-linear-gradient(
-      90deg,
-      var(--purple), var(--purple) 10px,
-      var(--blue) 10px, var(--blue) 20px
-    );
-    position: relative;
-    z-index: 2;
+  @media (prefers-reduced-motion: no-preference){
+    .avatar-img {
+      animation: wag 3.2s ease-in-out infinite;
+      transform-origin: center center;
+    }
   }
-
-  .section-title {
-    font-size: 13px;
-    font-weight: 900;
-    color: var(--ink);
-    letter-spacing: 0.05em;
-    margin-bottom: 10px;
-    position: relative;
-    z-index: 2;
+  @keyframes wag{
+    0%,100%{transform:rotate(0deg);}
+    50%{transform:rotate(-4deg);}
   }
-
-  .hobbies {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 22px;
-    position: relative;
-    z-index: 2;
-  }
-
-  .hobby {
-    font-size: 13px;
-    font-weight: 700;
-    padding: 7px 12px;
-    border-radius: 999px;
-    border: 2px solid var(--ink);
-    background: #fff;
-    color: var(--ink);
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    transition: transform 0.15s ease;
-  }
-  .hobby:hover { transform: translateY(-3px) rotate(-2deg); }
-  .hobbies .hobby:nth-child(4n+1) { background: var(--yellow); }
-  .hobbies .hobby:nth-child(4n+2) { background: var(--blue); color: #fff; border-color: var(--blue);}
-  .hobbies .hobby:nth-child(4n+3) { background: var(--pink); color: #fff; border-color: var(--pink);}
-  .hobbies .hobby:nth-child(4n) { background: var(--purple); color: #fff; border-color: var(--purple);}
-
-  .links {
-    display: flex;
-    gap: 10px;
-    position: relative;
-    z-index: 2;
-  }
-
-  .link {
-    flex: 1;
-    text-align: center;
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 800;
-    color: var(--ink);
-    background: #fff;
-    border: 2px solid var(--ink);
-    border-radius: 12px;
-    padding: 10px 6px;
-    transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
-  }
-  .link:hover {
-    background: var(--ink);
-    color: var(--yellow);
-    transform: translateY(-2px);
-  }
-
-  .tag-note {
-    margin-top: 18px;
-    font-size: 11px;
-    color: #9992;
-    text-align: center;
-    position: relative;
-    z-index: 2;
-  }
-  .tag-note b { color: var(--purple); }
-
 </style>
 </head>
 <body>
 
-  <div class="stage">
-    <div class="card">
-      <div class="confetti c1"></div>
-      <div class="confetti c2"></div>
-      <div class="confetti c3"></div>
-      <div class="confetti c4"></div>
+<div class="card">
 
-      <span class="eyebrow">★ DIGITAL CARD</span>
-
-      <div class="name-block">
-        <span class="kana">サメチ</span>
-        <span class="name">さめち</span>
-        <br>
-        <span class="role">読書好きなインドア専門学生</span>
+  <div class="header">
+    <div class="seigaiha"></div>
+    
+    <div class="avatar-wrap">
+      <div class="avatar-ring">
+        <div class="hanko">
+          <!-- プロフィール画像 -->
+          <img class="avatar-img" src="img/Harrypotter.jpeg" alt="プロフィール画像">
+        </div>
       </div>
-
-      <div class="divider"></div>
-
-      <div class="section-title">HOBBIES</div>
-      <div class="hobbies">
-        <span class="hobby">📚 読書（ほぼ毎日）</span>
-        <span class="hobby">🎬 映画鑑賞</span>
-        <span class="hobby">🎮 ゲーム（原神・スプラ3 など）</span>
-        <span class="hobby">📺 配信視聴（ツイキャス）</span>
-      </div>
-
-      <div class="section-title">MORE ABOUT ME</div>
-      <div class="hobbies">
-        <span class="hobby">🏸 バドミントン部</span>
-        <span class="hobby">🎙 放送局</span>
-        <span class="hobby">🍽 飲食店バイト</span>
-      </div>
-
-      <div class="links">
-        <a class="link" href="#" target="_blank" rel="noopener">📺 ツイキャス</a>
-        <a class="link" href="#" target="_blank" rel="noopener">🐦 X</a>
-      </div>
-
-      <div class="tag-note">信条：<b>責任を感じすぎない</b></div>
     </div>
+
+    <svg class="waves" viewBox="0 0 380 60" preserveAspectRatio="none">
+      <path d="M0,30 C40,10 80,50 120,30 C160,10 200,50 240,30 C280,10 320,50 360,30 L380,30 L380,60 L0,60 Z" fill="#F6F0E3" opacity="1"></path>
+    </svg>
   </div>
+
+  <div class="body">
+    <p class="name-en">Samechi Dayo</p>
+    <h1 class="name-jp">さめち だよ</h1>
+    <p class="role">LiversStaff ・ SE</p>
+
+    <div class="divider">
+      <span class="line"></span>
+      <!-- <svg viewBox="0 0 24 24"><path d="M2,16 Q6,10 12,16 T22,16" stroke="#E4694F" stroke-width="2" fill="none" stroke-linecap="round"/></svg> -->
+      <span class="line"></span>
+    </div>
+
+    <p class="catch">"あざらしのように、<br>まるく、おだやかに。"</p>
+
+    <div class="tags">
+      <span class="tag">#和菓子好き</span>
+      <span class="tag">#SE</span>
+      <span class="tag">#鮫より海豹の方が好き</span>
+      <span class="tag">#</span>
+      <span class="tag">#Staff</span>
+    </div>
+
+    <div class="links">
+      <a class="link" href="#" onclick="return false;">
+        <span class="icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1" fill="#F6F0E3" stroke="none"/></svg></span>
+        <span class="label">Instagram<br><span class="handle">@shiomi_maru_wagashi</span></span>
+      </a>
+      <a class="link" href="https://github.com/samechi" onclick="return true;">
+        <span class="icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.5v-1.85c-2.78.62-3.37-1.37-3.37-1.37-.46-1.2-1.11-1.52-1.11-1.52-.9-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.89 1.57 2.34 1.11 2.91.85.09-.67.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.32.1-2.75 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 5 0c1.9-1.33 2.74-1.05 2.74-1.05.56 1.43.2 2.49.1 2.75.65.72 1.03 1.64 1.03 2.76 0 3.94-2.35 4.8-4.58 5.06.36.32.68.94.68 1.9v2.82c0 .28.18.61.69.5A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z" stroke-width="1.4"/></svg></span>
+        <span class="label">GitHub<br><span class="handle">github.com/samechi</span></span>
+      </a>
+      <a class="link" href="#" onclick="return false;">
+        <span class="icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke-width="2"/><path d="M3 12h18M12 3c2.5 2.5 3.5 5.5 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-5.5-3.5-9s1-6.5 3.5-9Z" stroke-width="1.6"/></svg></span>
+        <span class="label">ホームページ<br><span class="handle">shiomimaru.jp</span></span>
+      </a>
+    </div>
+
+    <div class="footer">
+      <span class="note">© 2026 Samechi Dayo</span>
+      <span class="stamp-text">名刺</span>
+    </div>
+
+  </div>
+</div>
 
 </body>
 </html>
